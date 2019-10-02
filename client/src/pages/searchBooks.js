@@ -84,14 +84,21 @@ handleInputChange = event => {
           if (res.data.items.length) {
             console.log("Items from google are " + JSON.stringify(res.data.items))
             let tempBooks =[]
+            let bookThumb = ""
             
             for(let i=0; i< res.data.items.length; i++) {
+              if(!res.data.items[i].volumeInfo.imageLinks) {
+                bookThumb = "http://lgimages.s3.amazonaws.com/nc-md.gif"
+              } else {
+                bookThumb = res.data.items[i].volumeInfo.imageLinks.thumbnail
+              }
+
              let  bookInfo= {"id":res.data.items[i].id,
-                "title": res.data.items[i].volumeInfo.title,
-                         "authors":res.data.items[i].volumeInfo.authors ,
-                         "description": res.data.items[i].volumeInfo.description,
-                         "image": res.data.items[i].volumeInfo.imageLinks.smallThumbnail,
-                         "link":res.data.items[i].volumeInfo.infoLink
+                "title": res.data.items[i].volumeInfo.title || "No title available",
+                         "authors":res.data.items[i].volumeInfo.authors || ["No author available"],
+                         "description": res.data.items[i].volumeInfo.description || "No description available",
+                         "image": bookThumb || "http://lgimages.s3.amazonaws.com/nc-md.gif",
+                         "link":res.data.items[i].volumeInfo.infoLink || "No link available"
 
               }
 
