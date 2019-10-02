@@ -3,7 +3,7 @@
     clear:both;
     padding-top: 60px;
     text-align: center;
-    color:green;
-    text-shadow: 4px 4px black;
-    background-image: url('/images/jumbo-img.jpg')
+    color:white;
+    text-shadow: 2px 2x black;
+    background: linear-gradient( to right, #588af4 , #ec5949 , #fdcb55 , #588af4 ,#52a859 , #ec5b4d   )
 }
