@@ -1,0 +1,23 @@
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+    width:100%;
+}
+
+.card-footer {
+height:40px;
+padding:0px;
+}
+
+.card-body {
+    padding-top:0px;
+    padding-bottom:0px;
+    margin-bottom:5px;
+    height:325px;
+    overflow: auto;
+}
+
+.book-img {
+    width:200px;
+    height:325px;
+}
