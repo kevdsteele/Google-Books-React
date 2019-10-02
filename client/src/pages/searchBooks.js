@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
-import SearchCard from "../components/SearchCard";
+import Card from "../components/Card";
 import SearchHeader from "../components/SearchHeader";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
@@ -77,7 +77,32 @@ handleInputChange = event => {
     event.preventDefault();
     
       API.searchBooks(this.state.searchTerm)
-        .then(res => this.setState({ books: res.data.items}))
+        .then(res => {
+          if (res.data.items.length) {
+            let tempBooks =[]
+            
+            for(let i=0; i< res.data.items.length; i++) {
+             let  bookInfo= {"id":res.data.items[i].id,
+                "title": res.data.items[i].volumeInfo.title,
+                         "authors":res.data.items[i].volumeInfo.authors ,
+                         "description": res.data.items[i].volumeInfo.description,
+                         "image": res.data.items[i].volumeInfo.imageLinks.smallThumbnail,
+                         "link":res.data.items[i].volumeInfo.infoLink
+
+              }
+
+              tempBooks.push(bookInfo)
+
+              
+            }
+            this.setState({ books: tempBooks})
+
+          }
+
+        
+          
+          
+          })
         .catch(err => console.log(err));
     
   };
@@ -162,12 +187,12 @@ handleInputChange = event => {
                      
                      </SearchHeader>    
                       
-                      <SearchCard 
+                      <Card 
                       book={book}
                       >
                        
                         
-                      </SearchCard>
+                      </Card>
                       <span className="d-flex flex-row-reverse w-100 mr-5">
                  
                   

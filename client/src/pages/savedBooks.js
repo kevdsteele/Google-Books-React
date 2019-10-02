@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import SaveHeader from "../components/SaveHeader";
-import SaveCard from "../components/SaveCard";
+import Card from "../components/Card";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
@@ -50,12 +50,12 @@ class SavedBooks extends Component {
                 {this.state.books.map(book => (
                   <Row key={book._id}>
                     <SaveHeader book={book} delete={this.deleteBook}></SaveHeader>
-                  <SaveCard key={book._id } book={book}
+                  <Card key={book._id } book={book}
                  
                       >
 
               
-                  </SaveCard>
+                  </Card>
                 
                   </Row>
                 ))}

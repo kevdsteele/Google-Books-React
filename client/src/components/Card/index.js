@@ -2,7 +2,9 @@ import React from "react";
 import "./index.css";
 
 
-function SearchCard(props) {
+function Card(props) {
+
+  
 
     return (
 
@@ -17,12 +19,14 @@ function SearchCard(props) {
                 <div className="card-horizontal">
 
                     <div className="img-square-wrapper">
-                        <img className="book-img" src={props.book.volumeInfo.imageLinks.smallThumbnail} alt="Card cap"/>
+
+                        
+                        <img className="book-img" src={props.book.image}  alt="Card cap"/>
                     </div>
 
                     <div className="card-body">
                       
-                        <p className="card-text">{props.book.volumeInfo.description}</p>
+                        <p className="card-text">{props.book.description}</p>
                     </div>
 
                 </div>
@@ -40,6 +44,6 @@ function SearchCard(props) {
     );
   }
   
-  export default SearchCard;
+  export default Card;
 
 
