@@ -41,17 +41,20 @@ class SearchBooks extends Component {
             this.setState({message:data.title + " was just saved by a user"})
             if (this.state.message !== "") {
                 this.notify()
+                this.setState({message:""})
             }
             
         })
         socket.on("My book", data => {this.setState({message:"You just saved " + data.title }) 
         if (this.state.message !== "") {
             this.notify()
+            this.setState({message:""})
         }
     })
     socket.on("Error", data => {this.setState({message: data.message }) 
     if (this.state.message !== "") {
         this.notify()
+        this.setState({message:""})
     }
 })
         
@@ -79,6 +82,7 @@ handleInputChange = event => {
       API.searchBooks(this.state.searchTerm)
         .then(res => {
           if (res.data.items.length) {
+            console.log("Items from google are " + JSON.stringify(res.data.items))
             let tempBooks =[]
             
             for(let i=0; i< res.data.items.length; i++) {
@@ -95,6 +99,8 @@ handleInputChange = event => {
 
               
             }
+
+            console.log("Books going to state are " + JSON.stringify(tempBooks))
             this.setState({ books: tempBooks})
 
           }
