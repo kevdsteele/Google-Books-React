@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 
-const socket = openSocket("/");
+const socket = openSocket();
 
 
 

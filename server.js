@@ -3,7 +3,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const server = require('http').createServer(app)
 
+const io = require('socket.io').listen(server)
 
 
 const PORT = process.env.PORT || 3001;
@@ -31,16 +33,15 @@ app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
 
-// Socket.io
-const http = require('http').Server(app);
 
 
 
-const io = require('socket.io')(http);
 
 
 
-io.on('connection', function(socket){
+
+
+io.sockets.on('connection', function(socket){
   console.log('a user connected');
   socket.on('disconnect', function(){
     console.log('User Disconnected');
@@ -58,4 +59,4 @@ io.on('connection', function(socket){
   }
   });
 });
-io.listen(8000);
+
