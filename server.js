@@ -8,6 +8,8 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
+const socketPort = process.env.PORT || 8000;
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -57,4 +59,4 @@ io.on('connection', function(socket){
   }
   });
 });
-io.listen(8000);
+io.listen(socketPort);
