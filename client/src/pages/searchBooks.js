@@ -162,7 +162,7 @@ handleInputChange = event => {
                      
                      </SearchHeader>    
                       
-                      <SearchCard key={book.id} 
+                      <SearchCard 
                       book={book}
                       >
                        
